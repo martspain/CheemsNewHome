@@ -9,6 +9,7 @@ TagManager:
   - Enemie
   - Pass
   - Background
+  - Floor
   layers:
   - Default
   - TransparentFX

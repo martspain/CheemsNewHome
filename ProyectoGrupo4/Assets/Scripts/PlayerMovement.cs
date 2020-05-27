@@ -4,48 +4,143 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float horizontalSpeed = 10f;
+    public float jumpForce = 40;
+    public Canvas pausa;
+    public AudioClip JumpSFX;
+    public AudioClip HitSFX;
+    public AudioClip PowerUpSFX;
+    public AudioClip CoinGottenSFX;
+    public AudioClip DestroySFX;
+
+    private AudioSource audio;
+    private Animator animatior;
+    private float horizontalInput;
+    private bool isDEAD;
+    private bool facingRight;
+    private bool facingLeft;
     private Rigidbody2D rb;
-    private int Size;
-    // Start is called before the first frame update
+    private Vector2 velocidad;
+    private bool canJump;
+    private SpriteRenderer render;
+    private int gemas = 0;
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        Size = 1;
+        audio = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody2D>();
+        velocidad = new Vector2();
+        canJump = false;
+        render = GetComponent<SpriteRenderer>();
+        facingRight = true;
+        animatior = GetComponent<Animator>();
+        isDEAD = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        this.Allign();
+        run(Input.GetAxis("Horizontal") * horizontalSpeed);
+        if (Input.GetButtonDown("Jump"))
+            Jump();
 
     }
 
-    private void FixedUpdate()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (rb)
+        if (other.CompareTag("PowerUp"))
+            getGema(other);
+
+        else if (other.CompareTag("Enemy"))
         {
-            rb.AddForce(new Vector2(Input.GetAxis("Horizontal") * 10, 0));
-            if (Input.GetAxis("Jump") > 0)
-                this.Jump();
+
+            if (gemas >= 4)
+            {
+                Destroy(other.gameObject);
+                audio.PlayOneShot(DestroySFX);
+
+            }
+            else
+            {
+                kill();
+            }
+        }
+        else if (other.CompareTag("AbsoluteDeath"))
+            kill();
+    }
+
+    private void getGema(Collider2D other)
+    {
+        audio.PlayOneShot(CoinGottenSFX);
+        Destroy(other.gameObject);
+        if (++gemas >= 4)
+        {
+            audio.PlayOneShot(PowerUpSFX);
+            gameObject.transform.localScale = new Vector2(1,1);
         }
     }
-    private void Jump() 
+
+    private void run(float horizontalInput)
     {
+        if (!isDEAD && rb)
+        {
+            velocidad = rb.velocity;
+            velocidad.x = horizontalInput;
+            rb.velocity = velocidad;
+        }
+
+        animatior.SetFloat("HorizontalSpeed", Mathf.Abs(horizontalInput));
+
+        if (!facingRight && horizontalInput > 0)
+            Flip();
+        else if (facingRight && horizontalInput < 0)    
+            Flip();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            canJump = true;
+            animatior.SetBool("isJumping", false);
+
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+            canJump = false;
+    }
+
+    private void Jump()
+    {
+        if (canJump && !isDEAD && rb)
+        {
+            audio.PlayOneShot(JumpSFX);
+            if (animatior)
+                animatior.SetBool("isJumping", true);
+            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            canJump = false;
+        }
+
+    }
+
+    private void Flip()
+    {
+        if (render)
+        {
+
+            render.flipX = facingRight;
+            facingRight = !facingRight;
+        }
+    }
+
+    private void kill()
+    {
+        audio.PlayOneShot(HitSFX);
+        isDEAD = true;
         if (rb)
-            if (Mathf.Abs(rb.velocity.y) < 0.05f)
-                rb.AddForce(new Vector2(0, 6), ForceMode2D.Impulse);
-    }
-
-    private void Allign()
-    {
-        Vector2 newScale = transform.localScale;
-        if (Input.GetAxis("Horizontal") > 0)
-            newScale.x = Size;
-        else if (Input.GetAxis("Horizontal") < 0)
-            newScale.x = -Size;
-        newScale.y = Size;
-        transform.localScale = newScale;
-
-    }
-}
+            Destroy(rb);
+        animatior.SetBool("isDamaged", true);
+    } 
+}   

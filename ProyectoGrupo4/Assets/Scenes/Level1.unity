@@ -254,10 +254,10 @@ GameObject:
   - component: {fileID: 26846922}
   - component: {fileID: 26846921}
   - component: {fileID: 26846920}
-  - component: {fileID: 26846923}
   - component: {fileID: 26846925}
   - component: {fileID: 26846924}
   - component: {fileID: 26846926}
+  - component: {fileID: 26846923}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -369,7 +369,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!58 &26846924
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -424,6 +424,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ae12fc3d58a2647b0c7a089dddaa42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalSpeed: 10
+  jumpForce: 40
+  pausa: {fileID: 1354941750}
+  JumpSFX: {fileID: 0}
+  HitSFX: {fileID: 0}
+  PowerUpSFX: {fileID: 0}
+  CoinGottenSFX: {fileID: 0}
+  DestroySFX: {fileID: 0}
 --- !u!1 &40077387
 GameObject:
   m_ObjectHideFlags: 0
@@ -3456,7 +3464,7 @@ GameObject:
   - component: {fileID: 1592958113}
   m_Layer: 0
   m_Name: Scene
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3602,7 +3610,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.1174088, y: -1.6800969}
+  m_Offset: {x: 3.7694588, y: -1.6800969}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3613,7 +3621,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 26.415936, y: 1.4200239}
+  m_Size: {x: 27.720036, y: 1.4200239}
   m_EdgeRadius: 0
 --- !u!1001 &1606187234
 PrefabInstance:
