@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 26846923}
   - component: {fileID: 26846925}
   - component: {fileID: 26846924}
+  - component: {fileID: 26846926}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -368,7 +369,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &26846924
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -411,6 +412,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49295306, y: 4.69}
   m_EdgeRadius: 0
+--- !u!114 &26846926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26846919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ae12fc3d58a2647b0c7a089dddaa42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &40077387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,6 +1315,7 @@ GameObject:
   - component: {fileID: 599867637}
   - component: {fileID: 599867636}
   - component: {fileID: 599867635}
+  - component: {fileID: 599867638}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1375,6 +1389,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &599867638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599867634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b584556ba3d5418babae7fe320fb3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 26846919}
 --- !u!1 &629188748
 GameObject:
   m_ObjectHideFlags: 0
