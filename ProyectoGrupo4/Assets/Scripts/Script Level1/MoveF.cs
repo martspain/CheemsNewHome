@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveF : MonoBehaviour
 {
     private Vector2 iniPos;
-    public int mov;
+    public float mov;
     // Start is called before the first frame update
     void Start()
     {
