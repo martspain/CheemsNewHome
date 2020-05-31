@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canJump;
     private SpriteRenderer render;
     private int gemas = 0;
+    private bool hasKey;
     void Start()
     {
         sonido = GetComponent<AudioSource>();
@@ -53,13 +55,22 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("PowerUp"))
             getGema(other);
 
+        else if (other.CompareTag("Pass"))
+        {
+            hasKey = true;
+            Destroy(other.gameObject);
+            if (CoinGottenSFX)
+                sonido.PlayOneShot(CoinGottenSFX);
+        }
+            
+
         else if (other.CompareTag("Enemy"))
         {
 
             if (gemas >= 4)
             {
                 Destroy(other.gameObject);
-                if(sonido)
+                if (sonido)
                     sonido.PlayOneShot(DestroySFX);
 
             }
@@ -70,16 +81,23 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (other.CompareTag("AbsoluteDeath"))
             kill();
+        else if (other.CompareTag("LevelDoor"))
+        {
+            if (hasKey)
+            {
+                SceneManager.LoadScene(2);
+            }
+        }
     }
 
     private void getGema(Collider2D other)
     {
-        if(sonido)
+        if(CoinGottenSFX)
             sonido.PlayOneShot(CoinGottenSFX);
         Destroy(other.gameObject);
         if (++gemas >= 4)
         {
-            if(sonido)
+            if(PowerUpSFX)
                 sonido.PlayOneShot(PowerUpSFX);
             gameObject.transform.localScale = new Vector2(1,1);
         }
@@ -122,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canJump && !isDEAD && rb)
         {
-            if(sonido)
+            if(JumpSFX)
                 sonido.PlayOneShot(JumpSFX);
             if (animatior)
                 animatior.SetBool("isJumping", true);
@@ -144,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void kill()
     {
-        if(sonido)
+        if(HitSFX)
             sonido.PlayOneShot(HitSFX);
         isDEAD = true;
         if (rb)
@@ -153,4 +171,5 @@ public class PlayerMovement : MonoBehaviour
         if(deathScreen)
             deathScreen.SetActive(true);
     } 
+
 }   
