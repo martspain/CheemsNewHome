@@ -5,15 +5,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float horizontalSpeed = 10f;
-    public float jumpForce = 40;
+    public float jumpForce = 100f;
     public Canvas pausa;
     public AudioClip JumpSFX;
     public AudioClip HitSFX;
     public AudioClip PowerUpSFX;
     public AudioClip CoinGottenSFX;
     public AudioClip DestroySFX;
+    public GameObject deathScreen;
 
-    private AudioSource audio;
+    private AudioSource sonido;
     private Animator animatior;
     private float horizontalInput;
     private bool isDEAD;
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private int gemas = 0;
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        sonido = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         velocidad = new Vector2();
         canJump = false;
@@ -34,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
         facingRight = true;
         animatior = GetComponent<Animator>();
         isDEAD = false;
+        if (deathScreen)
+            deathScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -56,7 +59,8 @@ public class PlayerMovement : MonoBehaviour
             if (gemas >= 4)
             {
                 Destroy(other.gameObject);
-                audio.PlayOneShot(DestroySFX);
+                if(sonido)
+                    sonido.PlayOneShot(DestroySFX);
 
             }
             else
@@ -70,11 +74,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void getGema(Collider2D other)
     {
-        audio.PlayOneShot(CoinGottenSFX);
+        if(sonido)
+            sonido.PlayOneShot(CoinGottenSFX);
         Destroy(other.gameObject);
         if (++gemas >= 4)
         {
-            audio.PlayOneShot(PowerUpSFX);
+            if(sonido)
+                sonido.PlayOneShot(PowerUpSFX);
             gameObject.transform.localScale = new Vector2(1,1);
         }
     }
@@ -116,7 +122,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canJump && !isDEAD && rb)
         {
-            audio.PlayOneShot(JumpSFX);
+            if(sonido)
+                sonido.PlayOneShot(JumpSFX);
             if (animatior)
                 animatior.SetBool("isJumping", true);
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
@@ -137,10 +144,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void kill()
     {
-        audio.PlayOneShot(HitSFX);
+        if(sonido)
+            sonido.PlayOneShot(HitSFX);
         isDEAD = true;
         if (rb)
             Destroy(rb);
         animatior.SetBool("isDamaged", true);
+        if(deathScreen)
+            deathScreen.SetActive(true);
     } 
 }   
