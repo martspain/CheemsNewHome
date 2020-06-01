@@ -86,7 +86,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 if(chest)
                     chest.GetComponent<Animator>().SetBool("isOpen", true);
-                SceneManager.LoadScene(2);
+                if (SceneManager.GetSceneByBuildIndex(1) == SceneManager.GetActiveScene())
+                    SceneManager.LoadScene(2);
+                else if (SceneManager.GetSceneByBuildIndex(2) == SceneManager.GetActiveScene())
+                    SceneManager.LoadScene(3);
             }
         }
     }

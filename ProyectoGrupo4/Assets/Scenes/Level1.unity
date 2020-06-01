@@ -264,11 +264,11 @@ GameObject:
   - component: {fileID: 12149867}
   - component: {fileID: 12149866}
   - component: {fileID: 12149865}
-  - component: {fileID: 12149864}
   - component: {fileID: 12149868}
+  - component: {fileID: 12149864}
   m_Layer: 0
   m_Name: jumps (3)
-  m_TagString: Floor
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -282,10 +282,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 12149863}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb5d780122b351f4985f74efa40e7c4f, type: 3}
+  m_Script: {fileID: 11500000, guid: 74ce7364f6dfad348a7cf3fecfdd31b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mov: 4
+  ampli: 4
 --- !u!61 &12149865
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1422,7 +1422,7 @@ GameObject:
   - component: {fileID: 134375376}
   m_Layer: 0
   m_Name: jumps
-  m_TagString: Floor
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2069,7 +2069,7 @@ GameObject:
   - component: {fileID: 209763399}
   m_Layer: 0
   m_Name: jumps (6)
-  m_TagString: Floor
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5062,7 +5062,7 @@ GameObject:
   - component: {fileID: 629188752}
   m_Layer: 0
   m_Name: jumps (1)
-  m_TagString: Floor
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11185,7 +11185,7 @@ GameObject:
   - component: {fileID: 1384687521}
   m_Layer: 0
   m_Name: jumps (5)
-  m_TagString: Floor
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11771,7 +11771,7 @@ GameObject:
   - component: {fileID: 1532300001}
   m_Layer: 0
   m_Name: jumps (2)
-  m_TagString: Floor
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
