@@ -460,6 +460,7 @@ GameObject:
   - component: {fileID: 937593593}
   - component: {fileID: 937593595}
   - component: {fileID: 937593596}
+  - component: {fileID: 937593597}
   m_Layer: 0
   m_Name: Enemy (3)
   m_TagString: Enemy
@@ -541,7 +542,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.8914528, y: 1.406806}
@@ -560,6 +561,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mov: 3
+--- !u!95 &937593597
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937593592}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c7ac90f436914600cbfa9ccefe65d26d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1003169031
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,6 +783,7 @@ GameObject:
   - component: {fileID: 1230964637}
   - component: {fileID: 1230964640}
   - component: {fileID: 1230964641}
+  - component: {fileID: 1230964642}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -880,6 +901,25 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!95 &1230964642
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230964635}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 309e7753aa0d5c9dbbd3b31a12d516ca, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1728004691
 GameObject:
   m_ObjectHideFlags: 0
