@@ -12,6 +12,7 @@ TagManager:
   - Floor
   - AbsoluteDeath
   - LevelDoor
+  - Spawn
   layers:
   - Default
   - TransparentFX
