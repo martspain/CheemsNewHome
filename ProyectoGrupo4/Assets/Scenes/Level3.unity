@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 102452904}
   m_Layer: 0
   m_Name: cloud (3)
-  m_TagString: Floor
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -816,7 +816,7 @@ GameObject:
   - component: {fileID: 382364250}
   m_Layer: 0
   m_Name: cloud
-  m_TagString: Floor
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1308,7 +1308,7 @@ GameObject:
   - component: {fileID: 1042857834}
   m_Layer: 0
   m_Name: cloud (2)
-  m_TagString: Floor
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1740,7 +1740,7 @@ GameObject:
   - component: {fileID: 1875795704}
   m_Layer: 0
   m_Name: cloud (1)
-  m_TagString: Floor
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1876,7 +1876,7 @@ GameObject:
   - component: {fileID: 1978446611}
   m_Layer: 0
   m_Name: cloud (4)
-  m_TagString: Floor
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

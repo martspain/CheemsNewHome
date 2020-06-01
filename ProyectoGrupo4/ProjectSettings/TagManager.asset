@@ -13,6 +13,7 @@ TagManager:
   - AbsoluteDeath
   - LevelDoor
   - Spawn
+  - Platform
   layers:
   - Default
   - TransparentFX
