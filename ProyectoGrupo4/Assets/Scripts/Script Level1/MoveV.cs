@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class MoveV : MonoBehaviour
 {
-    private Vector2 iniPos;
+
     public float up;
+
+    private Vector2 iniPos;
+    private Vector2 newPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +19,7 @@ public class MoveV : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localPosition = iniPos + new Vector2(0, Mathf.Sin(Time.time) * up);
+        newPos = new Vector2(0, Mathf.Sin(Time.time) * up);
+        transform.localPosition = iniPos + newPos;
     }
 }

@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip CoinGottenSFX;
     public AudioClip DestroySFX;
     public GameObject deathScreen;
+    public GameObject chest;
 
     private AudioSource sonido;
     private Animator animatior;
@@ -85,6 +86,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (hasKey)
             {
+                if(chest)
+                    chest.GetComponent<Animator>().SetBool("isOpen", true);
                 SceneManager.LoadScene(2);
             }
         }
