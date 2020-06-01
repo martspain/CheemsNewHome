@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     private bool facingLeft;
     private Rigidbody2D rb;
     private Vector2 velocidad;
-    private bool canJump;
     private SpriteRenderer render;
     private int gemas = 0;
     private bool hasKey;
@@ -33,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
         sonido = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         velocidad = new Vector2();
-        canJump = false;
         render = GetComponent<SpriteRenderer>();
         facingRight = true;
         animatior = GetComponent<Animator>();
@@ -127,30 +125,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
-            canJump = true;
             animatior.SetBool("isJumping", false);
 
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Floor"))
-            canJump = false;
-    }
-
     private void Jump()
     {
-        if (canJump && !isDEAD && rb)
+        if (!isDEAD && rb)
         {
-            if(JumpSFX)
-                sonido.PlayOneShot(JumpSFX);
-            if (animatior)
-                animatior.SetBool("isJumping", true);
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            canJump = false;
+            if(Mathf.Abs(rb.velocity.y) < 0.05f)
+            {
+                if (JumpSFX)
+                    sonido.PlayOneShot(JumpSFX);
+                if (animatior)
+                    animatior.SetBool("isJumping", true);
+                rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            }
         }
-
     }
 
     private void Flip()
