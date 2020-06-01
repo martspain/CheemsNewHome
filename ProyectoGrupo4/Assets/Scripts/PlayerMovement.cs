@@ -126,7 +126,20 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Floor"))
         {
             animatior.SetBool("isJumping", false);
+        }
 
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            animatior.SetBool("isJumping", false);
+            gameObject.transform.parent = collision.gameObject.transform;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            gameObject.transform.parent = null;
         }
     }
 
